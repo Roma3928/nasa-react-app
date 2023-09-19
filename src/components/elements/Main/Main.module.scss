@@ -1,0 +1,34 @@
+.main {
+    flex-grow: 1;
+    padding-top: 9px;
+
+    .decorElement {
+        background-image: url(../../../assets/img/earth-img.png);
+        background-repeat: no-repeat;
+        position: fixed;
+        z-index: -1;
+        left: 0;
+        top: 138px;
+        width: 536px;
+        height: 100%;
+
+    }
+
+    .asteroids {
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        &ListBox {
+            max-width: 402px;
+            width: 100%;
+        }
+
+        &ListTitle {
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom: 8px;
+        }
+    }
+
+}

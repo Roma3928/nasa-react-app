@@ -1,0 +1,20 @@
+.categories {
+    li {
+        display: inline-block;
+        font-size: 16px;
+        line-height: 24px;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    li:not(:first-child)::before {
+        content: "|";
+        margin: 0 6px;
+        text-decoration: none;
+    }
+
+    .active {
+        font-weight: 700;
+        text-decoration: none;
+    }
+}
