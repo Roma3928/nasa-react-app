@@ -1,10 +1,69 @@
 .asteroidBlock {
     margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
     .asteroidDate {
-        margin-bottom: 8px;
         font-weight: 700;
         font-size: 24px;
         line-height: 32px;
     }
+
+    .asteroidContent {
+        display: flex;
+        gap: 8px;
+    }
+
+    .asteroidDistance {
+        position: relative;
+
+        &::after {
+            content: url(../../../../assets/img/arrow-icon.svg);
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+        }
+    }
+
+    .asteroidImg {
+        width: 22px;
+        height: 24px;
+        align-self: center;
+
+        .large {
+            width: 36px;
+            height: 40px;
+        }
+    }
+
+    .asteroidName {
+        font-weight: 700;
+        text-decoration-line: underline;
+        margin-bottom: 2px;
+    }
+
+    .asteroidSize {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .asteroidFooter {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .asteroiHazardAssessment {
+        font-size: 14px;
+        line-height: 20px;
+        color: #E3E5E5;
+        display: flex;
+
+        &::before {
+            content: url(../../../../assets/img/warning-icon.svg);
+            margin-right: 4px;
+        }
+    }
+
 }

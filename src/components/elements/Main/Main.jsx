@@ -14,6 +14,12 @@ const Main = () => {
             <AsteroidBlock date="12 сент 2023" />
             <AsteroidBlock date="12 сент 2023" />
             <AsteroidBlock date="12 сент 2023" />
+            <AsteroidBlock date="12 сент 2023" />
+            <AsteroidBlock date="12 сент 2023" />
+            <AsteroidBlock date="12 сент 2023" />
+            <AsteroidBlock date="12 сент 2023" />
+            <AsteroidBlock date="12 сент 2023" />
+            <AsteroidBlock date="12 сент 2023" />
           </div>
         </section>
       </div>
