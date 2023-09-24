@@ -11,16 +11,17 @@
         top: 138px;
         width: 536px;
         height: 100%;
-
     }
 
     .asteroids {
         position: relative;
         display: flex;
         justify-content: center;
+        align-items: flex-start;
+        gap: 10px;
 
         &ListBox {
-            max-width: 402px;
+            max-width: 392px;
             width: 100%;
             padding-bottom: 24px;
         }

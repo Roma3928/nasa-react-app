@@ -1,3 +1,4 @@
+import AsteroidBasket from './AsteroidBasket/AsteroidBasket';
 import AsteroidBlock from './AsteroidBlock/AsteroidBlock';
 import Categories from './Categories/Categories';
 import styles from './Main.module.scss';
@@ -21,6 +22,7 @@ const Main = () => {
             <AsteroidBlock date="12 сент 2023" />
             <AsteroidBlock date="12 сент 2023" />
           </div>
+          <AsteroidBasket />
         </section>
       </div>
     </main>
