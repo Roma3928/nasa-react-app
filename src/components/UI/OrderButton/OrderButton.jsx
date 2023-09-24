@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './OrderButton.module.scss';
 
-function OrderButton() {
+function OrderButton(props) {
   const [itemAdded, setitemAdded] = React.useState(false);
 
   const addItem = () => {
@@ -10,7 +10,7 @@ function OrderButton() {
 
   return (
     <React.Fragment>
-      <button className={styles.orderButton} onClick={addItem}>
+      <button className={styles.orderButton} onClick={addItem} {...props}>
         {itemAdded ? 'В КОРЗИНЕ' : 'ЗАКАЗАТЬ'}
       </button>
     </React.Fragment>

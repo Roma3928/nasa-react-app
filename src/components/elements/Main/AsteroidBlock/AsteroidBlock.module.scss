@@ -31,7 +31,7 @@
         height: 24px;
         align-self: center;
 
-        .large {
+        &Large {
             width: 36px;
             height: 40px;
         }
@@ -54,7 +54,7 @@
         align-items: center;
     }
 
-    .asteroiHazardAssessment {
+    .asteroidHazardAssessment {
         font-size: 14px;
         line-height: 20px;
         color: #E3E5E5;

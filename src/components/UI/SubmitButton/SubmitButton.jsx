@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './SubmitButton.module.scss';
 
-function SubmitButton() {
+function SubmitButton(props) {
   return (
     <React.Fragment>
-      <button className={styles.submitButton}>Отправить</button>
+      <button className={styles.submitButton} {...props}>
+        Отправить
+      </button>
     </React.Fragment>
   );
 }
