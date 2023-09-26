@@ -8,9 +8,7 @@ function AsteroidBlock({ name, hazardous, size, distance, date }) {
     <div className={styles.asteroidBlock}>
       <p className={styles.asteroidDate}>{date}</p>
       <div className={styles.asteroidContent}>
-        <p className={styles.asteroidDistance}>
-          {Math.round(distance)} <span>км</span>
-        </p>
+        <p className={styles.asteroidDistance}>{distance}</p>
         <img
           className={classNames(styles.asteroidImg, {
             [styles.asteroidImgLarge]: size > 100,

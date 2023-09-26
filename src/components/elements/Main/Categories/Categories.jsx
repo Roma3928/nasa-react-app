@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from './Categories.module.scss';
 
-function Categories() {
+function Categories({ setCategory }) {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const categories = ['в километрах', 'в лунных орбитах'];
 
   const onClickCategories = (index) => {
+    if (index === 0) {
+      setCategory('kilometers');
+    } else if (index === 1) {
+      setCategory('lunarOrbit');
+    }
     setActiveIndex(index);
   };
 
