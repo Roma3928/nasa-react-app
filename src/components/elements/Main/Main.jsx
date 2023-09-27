@@ -38,6 +38,7 @@ const Main = () => {
           <div className={styles.asteroidsListBox}>
             <h2 className={styles.asteroidsListTitle}>Ближайшие подлёты астероидов</h2>
             <Categories setCategory={setCategory} />
+            {asteroidError && <p className={styles.error}>Произошла ошибка!</p>}
             {isAsteroidsLoading ? (
               <div className={styles.loaderBox}>
                 <Loader />
