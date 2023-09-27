@@ -5,22 +5,20 @@ import Categories from './Categories/Categories';
 import styles from './Main.module.scss';
 import AsteroidService from '../../../API/AsteroidService';
 import Loader from '../../UI/Loader/Loader';
+import { useFetching } from '../../../hooks/useFetching';
 
 const Main = () => {
   const [asteroids, setAsteroids] = React.useState([]);
   const [category, setCategory] = React.useState('kilometers');
-  const [isAsteroidsLoading, setIsAsteroidsLoading] = React.useState(false);
+
+  const [fetchAsteroid, isAsteroidsLoading, asteroidError] = useFetching(async () => {
+    const asteroid = await AsteroidService.getAll();
+    setAsteroids(Object.values(asteroid.near_earth_objects));
+  });
 
   React.useEffect(() => {
     fetchAsteroid();
   }, []);
-
-  const fetchAsteroid = async () => {
-    setIsAsteroidsLoading(true);
-    const asteroid = await AsteroidService.getAll();
-    setAsteroids(Object.values(asteroid.near_earth_objects));
-    setIsAsteroidsLoading(false);
-  };
 
   const formatLunarOrbits = (count) => {
     if (count === 1) {
