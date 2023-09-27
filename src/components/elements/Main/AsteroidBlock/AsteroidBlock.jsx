@@ -1,6 +1,7 @@
 import styles from './AsteroidBlock.module.scss';
 import asteroidIcon from '../../../../assets/img/asteroid-img.png';
 import OrderButton from '../../../UI/OrderButton/OrderButton';
+import arrowIcon from '../../../../assets/img/arrow-icon.svg';
 import classNames from 'classnames';
 
 function AsteroidBlock({ name, hazardous, size, distance, date }) {
@@ -8,7 +9,9 @@ function AsteroidBlock({ name, hazardous, size, distance, date }) {
     <div className={styles.asteroidBlock}>
       <p className={styles.asteroidDate}>{date}</p>
       <div className={styles.asteroidContent}>
-        <p className={styles.asteroidDistance}>{distance}</p>
+        <p className={styles.asteroidDistance}>
+          {distance} <img src={arrowIcon} alt="" />
+        </p>
         <img
           className={classNames(styles.asteroidImg, {
             [styles.asteroidImgLarge]: size > 100,

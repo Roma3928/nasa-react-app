@@ -21,6 +21,7 @@
         gap: 10px;
 
         &ListBox {
+            position: relative;
             max-width: 392px;
             width: 100%;
             padding-bottom: 24px;
@@ -31,6 +32,12 @@
             line-height: 36px;
             margin-bottom: 8px;
         }
+    }
+
+    .loaderBox {
+        position: absolute;
+        bottom: -70px;
+        left: 92px;
     }
 
 }

@@ -18,11 +18,11 @@
     .asteroidDistance {
         position: relative;
 
-        &::after {
-            content: url(../../../../assets/img/arrow-icon.svg);
+        img {
             position: absolute;
-            bottom: -2px;
+            bottom: 4px;
             left: 0;
+            width: 100%;
         }
     }
 
