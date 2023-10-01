@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Categories.module.scss';
 
-function Categories({ setCategory }) {
+const Categories = React.memo(({ setCategory }) => {
   const [activeIndex, setActiveIndex] = React.useState(0);
   const categories = ['в километрах', 'в лунных орбитах'];
 
@@ -28,6 +28,6 @@ function Categories({ setCategory }) {
       </ul>
     </div>
   );
-}
+});
 
 export default Categories;

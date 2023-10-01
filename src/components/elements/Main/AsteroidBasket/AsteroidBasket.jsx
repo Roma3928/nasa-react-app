@@ -1,7 +1,8 @@
+import React from 'react';
 import SubmitButton from '../../../UI/SubmitButton/SubmitButton';
 import styles from './AsteroidBasket.module.scss';
 
-function AsteroidBasket() {
+const AsteroidBasket = React.memo(() => {
   return (
     <div className={styles.basket}>
       <div>
@@ -13,6 +14,6 @@ function AsteroidBasket() {
       <SubmitButton />
     </div>
   );
-}
+});
 
 export default AsteroidBasket;

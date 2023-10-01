@@ -1,10 +1,11 @@
+import React from 'react';
 import styles from './AsteroidBlock.module.scss';
 import asteroidIcon from '../../../../assets/img/asteroid-img.png';
 import OrderButton from '../../../UI/OrderButton/OrderButton';
 import arrowIcon from '../../../../assets/img/arrow-icon.svg';
 import classNames from 'classnames';
 
-function AsteroidBlock({ name, hazardous, size, distance, date }) {
+const AsteroidBlock = React.memo(({ name, hazardous, size, distance, date }) => {
   return (
     <div className={styles.asteroidBlock}>
       <p className={styles.asteroidDate}>{date}</p>
@@ -32,6 +33,6 @@ function AsteroidBlock({ name, hazardous, size, distance, date }) {
       </div>
     </div>
   );
-}
+});
 
 export default AsteroidBlock;
