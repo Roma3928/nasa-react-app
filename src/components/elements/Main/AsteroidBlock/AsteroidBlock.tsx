@@ -1,11 +1,19 @@
-import React from 'react';
+import { memo, FC } from 'react';
 import styles from './AsteroidBlock.module.scss';
 import asteroidIcon from '../../../../assets/img/asteroid-img.png';
 import OrderButton from '../../../UI/OrderButton/OrderButton';
 import arrowIcon from '../../../../assets/img/arrow-icon.svg';
 import classNames from 'classnames';
 
-const AsteroidBlock = React.memo(({ name, hazardous, size, distance, date }) => {
+interface AsteroidBlockProps {
+  name: string;
+  date: string;
+  distance: string;
+  size: number;
+  hazardous: boolean;
+}
+
+const AsteroidBlock: FC<AsteroidBlockProps> = memo(({ name, date, distance, size, hazardous }) => {
   return (
     <div className={styles.asteroidBlock}>
       <p className={styles.asteroidDate}>{date}</p>

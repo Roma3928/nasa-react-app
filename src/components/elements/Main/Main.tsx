@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState, useRef, FC, useEffect } from 'react';
 import AsteroidBasket from './AsteroidBasket/AsteroidBasket';
 import AsteroidBlock from './AsteroidBlock/AsteroidBlock';
 import Categories from './Categories/Categories';
@@ -8,21 +8,41 @@ import Loader from '../../UI/Loader/Loader';
 import { useFetching } from '../../../hooks/useFetching';
 import { getPageCount } from '../../../utils/pages';
 import { useObserver } from '../../../hooks/useObserver';
+import { formatLunarOrbits } from '../../../utils/strings';
 
-const Main = () => {
-  const [asteroids, setAsteroids] = React.useState([]);
-  const [category, setCategory] = React.useState('kilometers');
-  const [totalPages, setTotalPages] = React.useState(0);
-  const [page, setPage] = React.useState(1);
-  const [limit, setLimit] = React.useState(10);
-  const lastElement = React.useRef();
+export interface Asteroid {
+  id: string;
+  name: string;
+  close_approach_data: {
+    close_approach_date_full: string;
+    miss_distance: {
+      kilometers: number;
+      lunar: number;
+    };
+  }[];
+  estimated_diameter: {
+    meters: {
+      estimated_diameter_min: number;
+    };
+  };
+  is_potentially_hazardous_asteroid: boolean;
+}
+
+const Main: FC = () => {
+  const [asteroids, setAsteroids] = useState<Asteroid[]>([]);
+  const [category, setCategory] = useState('kilometers');
+  const [totalPages, setTotalPages] = useState(0);
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
+  const lastElementRef = useRef<HTMLDivElement>(null);
 
   const [fetchAsteroid, isAsteroidsLoading, asteroidError] = useFetching(async () => {
     const asteroid = await AsteroidService.getAll();
-    let resultingListOfAsteroids = [];
+    let resultingListOfAsteroids: Asteroid[] = [];
+    console.log(asteroid.near_earth_objects);
     for (let listOfAsteroids of Object.values(asteroid.near_earth_objects)) {
       for (let data of listOfAsteroids) {
-        resultingListOfAsteroids.push(data);
+        resultingListOfAsteroids.push(data as Asteroid);
       }
     }
     const startIndex = (page - 1) * limit;
@@ -35,23 +55,13 @@ const Main = () => {
     setTotalPages(getPageCount(totalCount, limit));
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchAsteroid();
   }, [page, limit]);
 
-  useObserver(lastElement, page < totalPages, isAsteroidsLoading, () => {
+  useObserver(lastElementRef, page < totalPages, isAsteroidsLoading, () => {
     setPage(page + 1);
   });
-
-  const formatLunarOrbits = (count) => {
-    if (count === 1) {
-      return '1 лунная орбита';
-    } else if (count >= 2 && count <= 4) {
-      return `${count} лунные орбиты`;
-    } else {
-      return `${count} лунных орбит`;
-    }
-  };
 
   return (
     <main className={styles.main}>
@@ -62,7 +72,7 @@ const Main = () => {
             <h2 className={styles.asteroidsListTitle}>Ближайшие подлёты астероидов</h2>
             <Categories setCategory={setCategory} />
             {asteroidError && <p className={styles.error}>Произошла ошибка!</p>}
-            {asteroids.map((asteroid) => (
+            {asteroids.map((asteroid: Asteroid) => (
               <AsteroidBlock
                 key={asteroid.id}
                 name={asteroid.name}
@@ -78,7 +88,7 @@ const Main = () => {
                 hazardous={asteroid.is_potentially_hazardous_asteroid}
               />
             ))}
-            <div ref={lastElement}></div>
+            <div ref={lastElementRef}></div>
             {isAsteroidsLoading && (
               <div className={styles.loaderBox}>
                 <Loader />

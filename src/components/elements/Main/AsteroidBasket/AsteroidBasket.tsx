@@ -1,8 +1,8 @@
-import React from 'react';
+import { memo, FC } from 'react';
 import SubmitButton from '../../../UI/SubmitButton/SubmitButton';
 import styles from './AsteroidBasket.module.scss';
 
-const AsteroidBasket = React.memo(() => {
+const AsteroidBasket: FC = memo(() => {
   return (
     <div className={styles.basket}>
       <div>
